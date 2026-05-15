@@ -29,8 +29,4 @@ export const blogLike = (id: number) => {
   revalidatePath(`/blogs/${id}`);
 }
 
-export const searchBlogBytext = (text) => {
-  
-}
-
 export default getBlogs;
