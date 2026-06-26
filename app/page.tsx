@@ -1,6 +1,12 @@
+"use client"
+
+import Homepage from './homepage.mdx'
+
 const Home = () => {
   return (
-    <h3>home page for the blogs app</h3>
+     <div className="markdown max-w-2xl mx-auto px-4 py-8">
+      <Homepage />
+    </div>
   )
 }
 
