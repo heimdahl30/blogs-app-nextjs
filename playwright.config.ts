@@ -1,4 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
+import * as dotenv from 'dotenv';
+
+const envFile = process.env.CI ? '.env.test' : '.env.local';
+dotenv.config({ path: envFile });
 
 export default defineConfig({
   // Point this to where your .spec.ts files live
@@ -38,5 +42,10 @@ export default defineConfig({
     url: 'http://localhost:3000',
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
+    env: {
+      DATABASE_URL: process.env.DATABASE_URL || '',
+      NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET || '',
+      NEXTAUTH_URL: process.env.NEXTAUTH_URL || '',
+    },
   },
 });
