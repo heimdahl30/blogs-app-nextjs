@@ -53,7 +53,9 @@ jobs:
         run: npx drizzle-kit push
 
       - name: Run Playwright tests
-        run: npx playwright test
+        env:
+          NODE_ENV: test
+        run: npx dotenv -e .env.test -- npx playwright test
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
