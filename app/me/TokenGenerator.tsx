@@ -25,17 +25,17 @@ const TokenGenerator = ({ initialToken }: TokenGeneratorProps) => {
   return (
     <div className="w-full">
       {token ? (
-        <div className="w-full bg-gray-100 p-4 rounded-md border border-gray-200 my-3">
+        <div data-testid="token-display" className="w-full bg-gray-100 p-4 rounded-md border border-gray-200 my-3">
           <p className="text-gray-600 font-mono break-all">Current Token</p>
                 <div className="bg-gray-200 p-4 rounded-md my-3">
-                    <p className="text-gray-600 font-mono break-all">{token}</p>
+                    <p data-testid="api-token" className="text-gray-600 font-mono break-all">{token}</p>
           </div>
         </div>
       ) : (
-        <p className="text-red-500 font-medium my-3">No API token found. Please generate one.</p>
+        <p data-testid="no-token-message" className="text-red-500 font-medium my-3">No API token found. Please generate one.</p>
       )}
 
-       <button onClick={handleGenerateToken} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 cursor-pointer">Generate New Token</button>
+       <button data-testid="generate-token-button" onClick={handleGenerateToken} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 cursor-pointer">Generate New Token</button>
     </div>
   );
 }

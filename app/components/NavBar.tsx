@@ -13,17 +13,20 @@ const Navbar = () => {
          <NavLink href='/users'>users</NavLink>
 
         <div className="ml-auto flex items-center gap-4">
+
         {session ? (
         <>
+        <em data-testid="user-username">{session.user?.name} logged in</em>{" "}
         <NavLink href="/me">me</NavLink>
-        {" | "}
+            {" | "}
           <NavLink href="/blogs/new">create new</NavLink>
           {" | "}
-          <em>{session.user?.name} logged in</em>{" "}
           <button onClick={() => signOut({ callbackUrl: "/" })} className="cursor-pointer hover:text-gray-300">logout</button>
         </>
       ) : (
         <>
+         <NavLink href="/me">me</NavLink>
+            {" | "}
         <NavLink href="/login">login</NavLink>
         {" | "}
         <NavLink href="/register">register</NavLink>

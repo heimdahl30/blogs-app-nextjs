@@ -3,10 +3,12 @@
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import { useNotification } from "../components/NotificationContext"
 
 const LoginPage = () => {
   const router = useRouter()
   const [error, setError] = useState("")
+     const { showNotification } = useNotification()
 
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -22,6 +24,7 @@ const LoginPage = () => {
       setError("Invalid username or password")
     } else {
       router.push("/")
+      showNotification("Logged in successfully")
       router.refresh()
     }
   }
@@ -29,7 +32,7 @@ const LoginPage = () => {
   return (
     <div className="flex flex-col items-center min-h-screen mt-10">
       <h2 className="text-2xl font-bold mb-0.5 pl-2">Login</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p data-testid="error-message" style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-4 w-full max-w-sm">
         <div className="flex gap-2 justify-center">
           <label>
@@ -43,7 +46,7 @@ const LoginPage = () => {
             <input type="password" name="password" required className="border rounded px-3 py-2 ml-3"/>
           </label>
         </div>
-        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
+        <button data-testid="login-button" type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
           Login
         </button>
       </form>

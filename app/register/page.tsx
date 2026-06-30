@@ -21,7 +21,7 @@ export default function RegisterPage() {
             Username
             <input type="text" name="username" defaultValue={state?.values?.username} required className="border rounded px-3 py-2 ml-4"/>
           </label>
-          {state?.errors?.username && <p style={{ color: "red" }}>{state?.errors?.username}</p>}
+          {state?.errors?.username && <p data-testid="username-error" style={{ color: "red" }}>{state?.errors?.username}</p>}
         </div>
        <div className="flex gap-2 justify-center">
           <label>
@@ -44,9 +44,9 @@ export default function RegisterPage() {
             </div>
             <input type="password" name="confirmPassword" defaultValue={state?.values?.confirmPassword} required className="border rounded px-3 py-2 ml-3"/>
           </label>
-          {state?.errors?.confirmPassword && <p style={{ color: "red" }}>{state?.errors?.confirmPassword}</p>}
+          {state?.errors?.confirmPassword && <p data-testid="passwordConfirm-error" style={{ color: "red" }}>{state?.errors?.confirmPassword}</p>}
         </div>
-        <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
+        <button type="submit" data-testid="register-button" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded cursor-pointer">
           Register
         </button>
       </form>
